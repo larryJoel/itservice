@@ -1,0 +1,78 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <h2>Precios de los Servicios IT</h2>
+    <div class="row">
+        <!-- FORM -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="servicio" placeholder="Inserte el servicio" class="form-control"
+                                required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="categoria" placeholder="Coloque la categoria" class="form-control"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="precio" placeholder="Coloque el precio" class="form-control"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="descripcion" rows="5" placeholder="descripcion"
+                                class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Crear servicio</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- LIST -->
+        <div class="col-md-9">
+            <table id="datatableBT4" class="table table-striped table-bordered" style="width:100%;">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>servicios</th>
+                        <th>categorias</th>
+                        <th>precios</th>
+                        <th>descripciones</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                      <% for(var i = 0; i < serv.length; i++) {-%>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= serv[i].servicio%></td>
+                            <td><%= serv[i].categoria%></td>
+                            <td><%= serv[i].precio%></td>
+                            <td><%= serv[i].descripcion%></td>
+                            <td>
+                                <a href="/turn/<%= serv[i]._id%>" 
+                                class="btn <%= serv[i].status ? 'btn-dark': 'btn-success'%>">Act</a>
+                                <a href="/delete/<%= serv[i]._id%>" class="btn btn-danger">del</a>
+                                <a href="/edit/<%= serv[i]._id%>" class="btn btn-primary" >edit</a>
+                            </td>
+                        </tr>
+                       <%}-%> 
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>N°</th>
+                        <th>servicios</th>
+                        <th>categorias</th>
+                        <th>precios</th>
+                        <th>descripciones</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') %>

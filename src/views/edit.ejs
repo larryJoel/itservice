@@ -1,0 +1,34 @@
+
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/edit/<%= serv._id %>" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="servicio" placeholder="Inserte el servicio" class="form-control" value="<%= serv.servicio %>"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="categoria" placeholder="Coloque la categoria" class="form-control" value="<%= serv.categoria %>"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="precio" placeholder="Coloque el precio" class="form-control" value="<%= serv.precio %>"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="descripcion" rows="5" placeholder="descripcion"
+                                class="form-control"><%= serv.descripcion %></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Editar servicio</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
